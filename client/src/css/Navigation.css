@@ -1,7 +1,18 @@
 nav {
     background-color: rgba(0, 0, 0, 0.8);
-    width: 100vw;
-    padding-left: 50px;
-    padding-right: 50px;
+    width: 100%;
+    padding-left: min(50px, 5vw);
+    padding-right: min(50px, 5vw);
     padding-top: 20px;
+}
+
+nav h1 {
+    white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }

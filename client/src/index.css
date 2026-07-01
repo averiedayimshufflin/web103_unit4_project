@@ -46,9 +46,7 @@
 }
 
 #root main {
-    display: flex;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 #root article {

@@ -4,9 +4,323 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 50px;
+}
+
+.page-shell {
+    width: min(1180px, calc(100vw - 32px));
+    margin: 0 auto;
+    padding: 42px 0;
+}
+
+.page-heading {
+    margin-bottom: 24px;
+}
+
+.page-heading p,
+.detail-card > p {
+    color: #f6d67f;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.builder-layout,
+.detail-layout {
+    align-items: stretch;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(320px, 1fr) minmax(360px, 0.9fr);
+}
+
+.preview-panel,
+.builder-form,
+.saved-car,
+.detail-card {
+    background: rgba(11, 14, 18, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
+}
+
+.preview-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 420px;
+    padding: 42px;
+}
+
+.car-illustration {
+    height: 260px;
+    position: relative;
+    width: 100%;
+}
+
+.car-body {
+    border-radius: 36px 74px 26px 24px;
+    box-shadow: inset 0 -22px 0 rgba(0, 0, 0, 0.18), 0 22px 40px rgba(0, 0, 0, 0.3);
+    height: 112px;
+    left: 50%;
+    max-width: 500px;
+    position: absolute;
+    top: 82px;
+    transform: translateX(-50%);
+    transition: background-color 180ms ease, border-radius 180ms ease;
+    width: min(88%, 500px);
+}
+
+.car-body::before {
+    background: inherit;
+    border-radius: 86px 86px 8px 8px;
+    content: '';
+    height: 86px;
+    left: 96px;
+    position: absolute;
+    top: -54px;
+    width: 210px;
+}
+
+.package-tech .car-body::before {
+    box-shadow: 34px -4px 0 rgba(81, 226, 194, 0.35);
+}
+
+.package-sunset .car-body::before {
+    height: 52px;
+    top: -30px;
+}
+
+.car-window {
+    background: linear-gradient(135deg, #c8f1ff, #4d7590);
+    border-radius: 50px 50px 8px 8px;
+    height: 52px;
+    left: 128px;
+    position: absolute;
+    top: -38px;
+    width: 150px;
+    z-index: 2;
+}
+
+.car-light {
+    background: #fff2a6;
+    border-radius: 12px;
+    height: 18px;
+    position: absolute;
+    right: 18px;
+    top: 42px;
+    width: 36px;
+}
+
+.wheel {
+    background: #111;
+    border: 10px solid #313844;
+    border-radius: 999px;
+    bottom: 40px;
+    height: 78px;
+    position: absolute;
+    width: 78px;
+}
+
+.wheel::after {
+    background: #cbd5e1;
+    border-radius: inherit;
+    content: '';
+    height: 26px;
+    left: 16px;
+    position: absolute;
+    top: 16px;
+    width: 26px;
+}
+
+.wheel-left {
+    left: 24%;
+}
+
+.wheel-right {
+    right: 20%;
+}
+
+.wheels-sport .wheel {
+    border-color: #dc2626;
+}
+
+.wheels-offroad .wheel {
+    border-width: 14px;
+    height: 92px;
+    width: 92px;
+}
+
+.roof-rack {
+    border-top: 8px solid #e5e7eb;
+    height: 22px;
+    left: 118px;
+    position: absolute;
+    top: -72px;
+    width: 190px;
+}
+
+.aero-kit {
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 999px;
+    bottom: -16px;
+    height: 20px;
+    position: absolute;
+    right: -22px;
+    width: 130px;
+}
+
+.preview-meta {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.builder-form {
+    padding: 28px;
+}
+
+.builder-form fieldset {
+    margin-bottom: 20px;
+}
+
+.builder-form legend {
+    color: #fff;
+    font-weight: 700;
+}
+
+.option-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.option-card {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    display: grid;
+    gap: 4px 10px;
+    grid-template-columns: auto 1fr;
+    margin: 0;
+    min-height: 78px;
+    padding: 12px;
+}
+
+.option-card input {
+    display: none;
+}
+
+.option-card small {
+    color: #d1d5db;
+    grid-column: 2;
+}
+
+.option-card.selected {
+    border-color: #f6d67f;
+}
+
+.option-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.44;
+}
+
+.swatch {
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+}
+
+.form-message,
+.empty-state {
+    background: rgba(115, 2, 12, 0.82);
+    border-radius: 8px;
+    color: white;
+    margin: 16px auto;
+    padding: 14px 18px;
+    width: min(760px, calc(100vw - 32px));
+}
+
+.form-actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cars-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.saved-car {
+    padding: 22px;
+}
+
+.saved-car header,
+.saved-car footer,
+.detail-card footer {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.saved-car a,
+.saved-car button,
+.detail-card a,
+.detail-card button {
+    margin: 0 !important;
+}
+
+.detail-layout {
+    grid-template-columns: 1fr 0.8fr;
+}
+
+.detail-card {
+    padding: 32px;
+}
+
+.detail-card dl {
+    display: grid;
+    gap: 12px;
+    margin: 28px 0;
+}
+
+.detail-card dl div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.detail-card dt {
+    color: #cbd5e1;
+}
+
+.detail-card dd {
+    margin: 0;
+}
+
+@media (max-width: 850px) {
+    .builder-layout,
+    .detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        min-height: 330px;
+        padding: 24px;
+    }
+
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
 }
