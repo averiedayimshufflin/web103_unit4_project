@@ -11,19 +11,27 @@ const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateCar title='BAG STUDIO | Customize' />
+    },
+    {
+      path:'/custombags',
+      element: <ViewCars title='BAG STUDIO | Custom Bags' />
+    },
+    {
+      path: '/custombags/:id',
+      element: <CarDetails title='BAG STUDIO | View' />
     },
     {
       path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      element: <ViewCars title='BAG STUDIO | Custom Bags' />
     },
     {
       path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      element: <CarDetails title='BAG STUDIO | View' />
     },
     {
       path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
+      element: <EditCar title='BAG STUDIO | Edit' />
     }
   ])
 

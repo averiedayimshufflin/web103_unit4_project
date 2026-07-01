@@ -3,13 +3,17 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const hasPostgresConfig = Boolean(
-  process.env.PGUSER &&
-  process.env.PGPASSWORD &&
-  process.env.PGHOST &&
-  process.env.PGPORT &&
+const envValues = [
+  process.env.PGUSER,
+  process.env.PGPASSWORD,
+  process.env.PGHOST,
+  process.env.PGPORT,
   process.env.PGDATABASE
-)
+]
+
+const hasPostgresConfig = envValues.every((value) => {
+  return value && !String(value).includes('your_render_')
+})
 
 const config = {
   user: process.env.PGUSER,

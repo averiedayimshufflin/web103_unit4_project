@@ -3,10 +3,10 @@ import { createCar, deleteCar, getCar, getCars, updateCar } from '../controllers
 
 const router = express.Router()
 
-router.get('/cars', getCars)
-router.get('/cars/:id', getCar)
-router.post('/cars', createCar)
-router.put('/cars/:id', updateCar)
-router.delete('/cars/:id', deleteCar)
+router.get('/bags', getCars)
+router.get('/bags/:id', getCar)
+router.post('/bags', createCar)
+router.put('/bags/:id', updateCar)
+router.delete('/bags/:id', deleteCar)
 
 export default router

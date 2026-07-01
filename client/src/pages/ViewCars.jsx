@@ -13,7 +13,7 @@ const ViewCars = () => {
         try {
             const data = await getAllCars()
             setCars(data)
-            setMessage(data.length ? '' : 'No custom cars saved yet.')
+            setMessage(data.length ? '' : 'No custom bags saved yet.')
         }
         catch (error) {
             setMessage(error.message)
@@ -32,11 +32,11 @@ const ViewCars = () => {
     return (
         <div className="page-shell">
             <section className="page-heading">
-                <p>Saved Garage</p>
-                <h1>Custom Cars</h1>
+                <p>Saved Closet</p>
+                <h1>Custom Bags</h1>
             </section>
 
-            {message && <p className="empty-state">{message}</p>}
+            {message && <p className="empty-state">{message.replace('cars', 'bags')}</p>}
 
             <section className="cars-grid">
                 {cars.map((car) => (
@@ -46,11 +46,11 @@ const ViewCars = () => {
                             <strong>{formatPrice(car.price)}</strong>
                         </header>
                         <p>
-                            {getOptionLabel('color', car.color)} paint, {getOptionLabel('wheels', car.wheels)} wheels,
-                            {' '}{getOptionLabel('package', car.package)} package
+                            {getOptionLabel('color', car.color)}, {getOptionLabel('wheels', car.wheels)},
+                            {' '}{getOptionLabel('package', car.package)} size
                         </p>
                         <footer>
-                            <Link role="button" to={`/customcars/${car.id}`}>Details</Link>
+                            <Link role="button" to={`/custombags/${car.id}`}>Details</Link>
                             <Link role="button" className="secondary" to={`/edit/${car.id}`}>Edit</Link>
                             <button className="contrast" onClick={() => handleDelete(car.id)}>Delete</button>
                         </footer>

@@ -33,7 +33,7 @@ const EditCar = () => {
 
     const handleUpdate = async (updatedCar) => {
         await updateCar(id, updatedCar)
-        navigate(`/customcars/${id}`)
+        navigate(`/custombags/${id}`)
     }
 
     if (!car) {
@@ -44,7 +44,7 @@ const EditCar = () => {
         <div className="page-shell">
             <section className="page-heading">
                 <p>Edit Studio</p>
-                <h1>Refine your build</h1>
+                <h1>Refine your bag</h1>
             </section>
             <CarForm initialCar={car} submitLabel="Update Build" onSubmit={handleUpdate} />
         </div>

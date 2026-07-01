@@ -1,34 +1,34 @@
-export const basePrice = 24000
+export const basePrice = 85
 
 export const carOptions = {
   color: [
-    { id: 'rally-red', label: 'Rally Red', price: 900, hex: '#c9252d' },
-    { id: 'lagoon-blue', label: 'Lagoon Blue', price: 700, hex: '#1976d2' },
-    { id: 'citrus-yellow', label: 'Citrus Yellow', price: 650, hex: '#f4c430' },
-    { id: 'midnight-black', label: 'Midnight Black', price: 1100, hex: '#101318' }
+    { id: 'rose-canvas', label: 'Rose Canvas', price: 10, hex: '#d9828b' },
+    { id: 'sage-nylon', label: 'Sage Nylon', price: 8, hex: '#7c9a7a' },
+    { id: 'cocoa-leather', label: 'Cocoa Leather', price: 32, hex: '#6b3f2a' },
+    { id: 'cream-suede', label: 'Cream Suede', price: 24, hex: '#d8c3a5' }
   ],
   wheels: [
-    { id: 'street', label: 'Street', price: 0 },
-    { id: 'sport', label: 'Sport', price: 1300 },
-    { id: 'offroad', label: 'Off-road', price: 1800 }
+    { id: 'top-handle', label: 'Top Handle', price: 0 },
+    { id: 'crossbody', label: 'Crossbody Strap', price: 18 },
+    { id: 'chain', label: 'Gold Chain', price: 26 }
   ],
   package: [
-    { id: 'comfort', label: 'Comfort', price: 1600 },
-    { id: 'tech', label: 'Tech', price: 2400 },
-    { id: 'sunset', label: 'Sunset Open-Air', price: 3200 }
+    { id: 'mini', label: 'Mini', price: 0 },
+    { id: 'daily', label: 'Daily Carry', price: 22 },
+    { id: 'weekender', label: 'Weekender', price: 48 }
   ],
   accessory: [
     { id: 'none', label: 'None', price: 0 },
-    { id: 'roof-rack', label: 'Roof Rack', price: 650 },
-    { id: 'aero-kit', label: 'Aero Kit', price: 1200 }
+    { id: 'tassel', label: 'Tassel Charm', price: 12 },
+    { id: 'laptop-sleeve', label: 'Laptop Sleeve', price: 20 }
   ]
 }
 
 export const defaultCar = {
   name: '',
-  color: 'rally-red',
-  wheels: 'street',
-  package: 'comfort',
+  color: 'rose-canvas',
+  wheels: 'top-handle',
+  package: 'daily',
   accessory: 'none'
 }
 

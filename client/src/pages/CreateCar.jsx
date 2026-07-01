@@ -10,14 +10,14 @@ const CreateCar = () => {
 
     const handleCreate = async (car) => {
         const savedCar = await createCar(car)
-        navigate(`/customcars/${savedCar.id}`)
+        navigate(`/custombags/${savedCar.id}`)
     }
 
     return (
         <div className="page-shell">
             <section className="page-heading">
                 <p>Design Studio</p>
-                <h1>Build a custom Bolt Bucket</h1>
+                <h1>Build a custom bag</h1>
             </section>
             <CarForm initialCar={defaultCar} submitLabel="Save Build" onSubmit={handleCreate} />
         </div>

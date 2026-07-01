@@ -7,12 +7,12 @@ const Navigation = () => {
     return (
         <nav>
             <ul>
-                <li><h1>Bolt Bucket</h1></li>
+                <li><h1>Bag Studio</h1></li>
             </ul>
 
             <ul>
                 <li><Link to='/' role='button'>Customize</Link></li>
-                <li><Link to='/customcars' role='button'>View Cars</Link></li>
+                <li><Link to='/custombags' role='button'>View Bags</Link></li>
             </ul>
             
         </nav>

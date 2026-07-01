@@ -1,4 +1,4 @@
-const API_BASE = '/api/cars'
+const API_BASE = '/api/bags'
 
 const parseResponse = async (response) => {
   if (response.status === 204) {

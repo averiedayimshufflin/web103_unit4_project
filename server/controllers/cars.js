@@ -3,12 +3,12 @@ import { pool, usingPostgres } from '../config/database.js'
 let demoCars = [
   {
     id: 1,
-    name: 'Campus Cruiser',
-    color: 'rally-red',
-    wheels: 'street',
-    package: 'comfort',
-    accessory: 'roof-rack',
-    price: 28600,
+    name: 'Studio Tote',
+    color: 'rose-canvas',
+    wheels: 'top-handle',
+    package: 'daily',
+    accessory: 'tassel',
+    price: 129,
     created_at: new Date().toISOString()
   }
 ]
@@ -31,12 +31,12 @@ const validateCar = (car) => {
     return `Missing required fields: ${missing.join(', ')}`
   }
 
-  if (car.color === 'midnight-black' && car.package === 'sunset') {
-    return 'Midnight Black paint cannot be paired with the Sunset Open-Air package.'
+  if (car.color === 'cream-suede' && car.package === 'weekender') {
+    return 'Cream Suede is too delicate for the Weekender size.'
   }
 
-  if (car.wheels === 'offroad' && car.accessory === 'aero-kit') {
-    return 'Off-road wheels are not compatible with the Aero Kit.'
+  if (car.wheels === 'chain' && car.accessory === 'laptop-sleeve') {
+    return 'The Gold Chain strap is not strong enough for the Laptop Sleeve add-on.'
   }
 
   if (!Number.isInteger(car.price) || car.price <= 0) {
@@ -53,7 +53,7 @@ export const getCars = async (_, res) => {
       return
     }
 
-    const results = await pool.query('SELECT * FROM custom_cars ORDER BY created_at DESC, id DESC')
+    const results = await pool.query('SELECT * FROM custom_bags ORDER BY created_at DESC, id DESC')
     res.status(200).json(results.rows)
   }
   catch (error) {
@@ -67,12 +67,12 @@ export const getCar = async (req, res) => {
 
     if (!usingPostgres) {
       const car = demoCars.find((item) => item.id === id)
-      car ? res.status(200).json(car) : res.status(404).json({ error: 'Car not found' })
+      car ? res.status(200).json(car) : res.status(404).json({ error: 'Bag not found' })
       return
     }
 
-    const results = await pool.query('SELECT * FROM custom_cars WHERE id = $1', [id])
-    results.rows[0] ? res.status(200).json(results.rows[0]) : res.status(404).json({ error: 'Car not found' })
+    const results = await pool.query('SELECT * FROM custom_bags WHERE id = $1', [id])
+    results.rows[0] ? res.status(200).json(results.rows[0]) : res.status(404).json({ error: 'Bag not found' })
   }
   catch (error) {
     res.status(500).json({ error: error.message })
@@ -101,7 +101,7 @@ export const createCar = async (req, res) => {
     }
 
     const results = await pool.query(
-      `INSERT INTO custom_cars (name, color, wheels, package, accessory, price)
+      `INSERT INTO custom_bags (name, color, wheels, package, accessory, price)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
       [car.name, car.color, car.wheels, car.package, car.accessory, car.price]
@@ -127,7 +127,7 @@ export const updateCar = async (req, res) => {
     if (!usingPostgres) {
       const index = demoCars.findIndex((item) => item.id === id)
       if (index === -1) {
-        res.status(404).json({ error: 'Car not found' })
+        res.status(404).json({ error: 'Bag not found' })
         return
       }
       demoCars[index] = { ...demoCars[index], ...car }
@@ -136,13 +136,13 @@ export const updateCar = async (req, res) => {
     }
 
     const results = await pool.query(
-      `UPDATE custom_cars
+      `UPDATE custom_bags
        SET name = $1, color = $2, wheels = $3, package = $4, accessory = $5, price = $6
        WHERE id = $7
        RETURNING *`,
       [car.name, car.color, car.wheels, car.package, car.accessory, car.price, id]
     )
-    results.rows[0] ? res.status(200).json(results.rows[0]) : res.status(404).json({ error: 'Car not found' })
+    results.rows[0] ? res.status(200).json(results.rows[0]) : res.status(404).json({ error: 'Bag not found' })
   }
   catch (error) {
     res.status(500).json({ error: error.message })
@@ -156,12 +156,12 @@ export const deleteCar = async (req, res) => {
     if (!usingPostgres) {
       const carExists = demoCars.some((item) => item.id === id)
       demoCars = demoCars.filter((item) => item.id !== id)
-      carExists ? res.status(204).send() : res.status(404).json({ error: 'Car not found' })
+      carExists ? res.status(204).send() : res.status(404).json({ error: 'Bag not found' })
       return
     }
 
-    const results = await pool.query('DELETE FROM custom_cars WHERE id = $1 RETURNING *', [id])
-    results.rows[0] ? res.status(204).send() : res.status(404).json({ error: 'Car not found' })
+    const results = await pool.query('DELETE FROM custom_bags WHERE id = $1 RETURNING *', [id])
+    results.rows[0] ? res.status(204).send() : res.status(404).json({ error: 'Bag not found' })
   }
   catch (error) {
     res.status(500).json({ error: error.message })

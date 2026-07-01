@@ -4,29 +4,27 @@ import { calculatePrice, formatPrice } from '../utilities/carPricing'
 import { getCompatibilityError, isOptionDisabled } from '../utilities/carValidation'
 
 const categoryLabels = {
-  color: 'Paint',
-  wheels: 'Wheels',
-  package: 'Cabin Package',
-  accessory: 'Accessory'
+  color: 'Fabric',
+  wheels: 'Strap',
+  package: 'Size',
+  accessory: 'Add-on'
 }
 
 const CarPreview = ({ car }) => {
-  const paint = getOption('color', car.color)
+  const fabric = getOption('color', car.color)
 
   return (
-    <section className="preview-panel" aria-label="Custom car preview">
-      <div className={`car-illustration wheels-${car.wheels} package-${car.package} accessory-${car.accessory}`}>
-        <div className="car-body" style={{ backgroundColor: paint?.hex }}>
-          <div className="car-window"></div>
-          <div className="car-light"></div>
-          {car.accessory === 'roof-rack' && <div className="roof-rack"></div>}
-          {car.accessory === 'aero-kit' && <div className="aero-kit"></div>}
+    <section className="preview-panel" aria-label="Custom bag preview">
+      <div className={`bag-illustration strap-${car.wheels} size-${car.package} accessory-${car.accessory}`}>
+        <div className="bag-body" style={{ backgroundColor: fabric?.hex }}>
+          <div className="bag-handle"></div>
+          <div className="bag-pocket"></div>
+          {car.accessory === 'tassel' && <div className="tassel"></div>}
+          {car.accessory === 'laptop-sleeve' && <div className="laptop-sleeve"></div>}
         </div>
-        <div className="wheel wheel-left"></div>
-        <div className="wheel wheel-right"></div>
       </div>
       <div className="preview-meta">
-        <p>{paint?.label}</p>
+        <p>{fabric?.label}</p>
         <h2>{formatPrice(calculatePrice(car))}</h2>
       </div>
     </section>
@@ -77,7 +75,7 @@ const CarForm = ({ initialCar, submitLabel, onSubmit, busy = false }) => {
             type="text"
             value={car.name}
             onChange={(event) => updateField('name', event.target.value)}
-            placeholder="Weekend Flash"
+            placeholder="Studio Tote"
           />
         </label>
 

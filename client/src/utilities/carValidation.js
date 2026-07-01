@@ -1,29 +1,29 @@
 export const getCompatibilityError = (car) => {
-  if (car.color === 'midnight-black' && car.package === 'sunset') {
-    return 'Midnight Black paint cannot be paired with the Sunset Open-Air package.'
+  if (car.color === 'cream-suede' && car.package === 'weekender') {
+    return 'Cream Suede is too delicate for the Weekender size.'
   }
 
-  if (car.wheels === 'offroad' && car.accessory === 'aero-kit') {
-    return 'Off-road wheels are not compatible with the Aero Kit.'
+  if (car.wheels === 'chain' && car.accessory === 'laptop-sleeve') {
+    return 'The Gold Chain strap is not strong enough for the Laptop Sleeve add-on.'
   }
 
   return ''
 }
 
 export const isOptionDisabled = (car, category, optionId) => {
-  if (category === 'package' && optionId === 'sunset' && car.color === 'midnight-black') {
+  if (category === 'package' && optionId === 'weekender' && car.color === 'cream-suede') {
     return true
   }
 
-  if (category === 'color' && optionId === 'midnight-black' && car.package === 'sunset') {
+  if (category === 'color' && optionId === 'cream-suede' && car.package === 'weekender') {
     return true
   }
 
-  if (category === 'accessory' && optionId === 'aero-kit' && car.wheels === 'offroad') {
+  if (category === 'accessory' && optionId === 'laptop-sleeve' && car.wheels === 'chain') {
     return true
   }
 
-  if (category === 'wheels' && optionId === 'offroad' && car.accessory === 'aero-kit') {
+  if (category === 'wheels' && optionId === 'chain' && car.accessory === 'laptop-sleeve') {
     return true
   }
 

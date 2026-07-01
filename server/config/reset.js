@@ -7,9 +7,9 @@ const createCarsTable = async () => {
   }
 
   await pool.query(`
-    DROP TABLE IF EXISTS custom_cars;
+    DROP TABLE IF EXISTS custom_bags;
 
-    CREATE TABLE custom_cars (
+    CREATE TABLE custom_bags (
       id SERIAL PRIMARY KEY,
       name TEXT NOT NULL,
       color TEXT NOT NULL,
@@ -21,7 +21,7 @@ const createCarsTable = async () => {
     );
   `)
 
-  console.log('custom_cars table reset')
+  console.log('custom_bags table reset')
   await pool.end()
 }
 

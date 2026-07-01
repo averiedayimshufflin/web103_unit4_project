@@ -28,40 +28,38 @@ const CarDetails = () => {
 
     const handleDelete = async () => {
         await deleteCar(id)
-        navigate('/customcars')
+        navigate('/custombags')
     }
 
     if (!car) {
         return <p className="empty-state">{message}</p>
     }
 
-    const paint = getOption('color', car.color)
+    const fabric = getOption('color', car.color)
 
     return (
         <div className="page-shell">
             <section className="detail-layout">
                 <div className="preview-panel detail-preview">
-                    <div className={`car-illustration wheels-${car.wheels} package-${car.package} accessory-${car.accessory}`}>
-                        <div className="car-body" style={{ backgroundColor: paint?.hex }}>
-                            <div className="car-window"></div>
-                            <div className="car-light"></div>
-                            {car.accessory === 'roof-rack' && <div className="roof-rack"></div>}
-                            {car.accessory === 'aero-kit' && <div className="aero-kit"></div>}
+                    <div className={`bag-illustration strap-${car.wheels} size-${car.package} accessory-${car.accessory}`}>
+                        <div className="bag-body" style={{ backgroundColor: fabric?.hex }}>
+                            <div className="bag-handle"></div>
+                            <div className="bag-pocket"></div>
+                            {car.accessory === 'tassel' && <div className="tassel"></div>}
+                            {car.accessory === 'laptop-sleeve' && <div className="laptop-sleeve"></div>}
                         </div>
-                        <div className="wheel wheel-left"></div>
-                        <div className="wheel wheel-right"></div>
                     </div>
                 </div>
 
                 <article className="detail-card">
-                    <p>Custom Build</p>
+                    <p>Custom Bag</p>
                     <h1>{car.name}</h1>
                     <h2>{formatPrice(car.price)}</h2>
                     <dl>
-                        <div><dt>Paint</dt><dd>{getOptionLabel('color', car.color)}</dd></div>
-                        <div><dt>Wheels</dt><dd>{getOptionLabel('wheels', car.wheels)}</dd></div>
-                        <div><dt>Package</dt><dd>{getOptionLabel('package', car.package)}</dd></div>
-                        <div><dt>Accessory</dt><dd>{getOptionLabel('accessory', car.accessory)}</dd></div>
+                        <div><dt>Fabric</dt><dd>{getOptionLabel('color', car.color)}</dd></div>
+                        <div><dt>Strap</dt><dd>{getOptionLabel('wheels', car.wheels)}</dd></div>
+                        <div><dt>Size</dt><dd>{getOptionLabel('package', car.package)}</dd></div>
+                        <div><dt>Add-on</dt><dd>{getOptionLabel('accessory', car.accessory)}</dd></div>
                     </dl>
                     <footer>
                         <Link role="button" to={`/edit/${car.id}`}>Edit Build</Link>
